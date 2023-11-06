@@ -1,63 +1,99 @@
-class RPGClass {
+/**
+ * Represents a class with different stats.
+ */
+class CharacterClass {
   /**
-   * Constructor for the RPGClass class.
+   * Constructor for the CharacterClass class.
    *
-   * @param {string} name - The name of the RPG class.
-   * @param {string} description - The description of the RPG class.
+   * @param {string} name - The name of the class.
+   * @param {number} strength - The strength stat of the class.
+   * @param {number} agility - The agility stat of the class.
+   * @param {number} intelligence - The intelligence stat of the class.
    */
-  constructor(name, description) {
+  constructor(name, strength, agility, intelligence) {
       /** @private */
       this.name = name;
 
       /** @private */
-      this.description = description;
+      this.strength = strength;
+
+      /** @private */
+      this.agility = agility;
+
+      /** @private */
+      this.intelligence = intelligence;
   }
 
   /**
-   * Getter method to retrieve the name of the RPG class.
+   * Getter method to retrieve the name of the class.
    *
-   * @returns {string} The name of the RPG class.
+   * @returns {string} The name of the class.
    */
   getName() {
       return this.name;
   }
 
   /**
-   * Getter method to retrieve the description of the RPG class.
+   * Getter method to retrieve the strength stat of the class.
    *
-   * @returns {string} The description of the RPG class.
+   * @returns {number} The strength stat of the class.
    */
-  getDescription() {
-      return this.description;
+  getStrength() {
+      return this.strength;
+  }
+
+  /**
+   * Getter method to retrieve the agility stat of the class.
+   *
+   * @returns {number} The agility stat of the class.
+   */
+  getAgility() {
+      return this.agility;
+  }
+
+  /**
+   * Getter method to retrieve the intelligence stat of the class.
+   *
+   * @returns {number} The intelligence stat of the class.
+   */
+  getIntelligence() {
+      return this.intelligence;
   }
 }
 
 /**
-* Function to create and pick an RPG class.
+* Function to ask the user to pick a class with different stats.
 *
-* @returns {RPGClass} The picked RPG class.
+* @returns {CharacterClass} The selected character class.
 */
-function pickRPGClass() {
-  // Create an array of available RPG classes
-  const classes = [
-      new RPGClass("Warrior", "A strong and skilled melee fighter."),
-      new RPGClass("Mage", "A master of arcane magic."),
-      new RPGClass("Rogue", "A stealthy and agile character."),
-      new RPGClass("monk", "A healer and unarmed master."),
-  ];
+function pickCharacterClass() {
+  // Example classes with different stats
+  const warrior = new CharacterClass("Warrior", 10, 5, 2);
+  const rogue = new CharacterClass("Rogue", 5, 10, 3);
+  const mage = new CharacterClass("Mage", 2, 3, 10);
 
-  // Pick a random RPG class from the array
-  const randomIndex = Math.floor(Math.random() * classes.length);
-  const pickedClass = classes[randomIndex];
+  // Prompt the user to pick a class
+  const classChoice = prompt("Please pick a class: Warrior, Rogue, or Mage");
 
-  return pickedClass;
+  // Validate the user's choice and return the corresponding class
+  switch (classChoice.toLowerCase()) {
+      case "warrior":
+          return warrior;
+      case "rogue":
+          return rogue;
+      case "mage":
+          return mage;
+      default:
+          throw new Error("Invalid class choice. Please pick Warrior, Rogue, or Mage.");
+  }
 }
 
-// Usage Example for pickRPGClass
+// Usage Example for pickCharacterClass
 
-// Pick an RPG class
-const pickedClass = pickRPGClass();
-
-// Display the picked RPG class in the console
-console.log(`You have picked the ${pickedClass.getName()} class.`);
-console.log(`Description: ${pickedClass.getDescription()}`);
+try {
+  const selectedClass = pickCharacterClass();
+  console.log(`You have selected the ${selectedClass.getName()} class.`);
+  console.log(`Stats: Strength - ${selectedClass.getStrength()}, Agility - ${selectedClass.getAgility()}, Intelligence - ${selectedClass.getIntelligence()}`);
+} catch (error) {
+  console.error(error.message);
+}
