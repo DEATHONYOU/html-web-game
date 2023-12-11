@@ -9,7 +9,7 @@ let mp = 50;
 const mpBarWidth = 200;
 const mpBarHeight = 30;
 const x = width / 2 - mpBarWidth / 2;
-const y = height / 2 - mpBarHeight / 2;
+const y = height / 2 - mpBarHeight / 2 + 100;
 
 const mpBar = new mpBar(x, y, mpBarWidth, mpBarHeight, mp, "blue");
 
