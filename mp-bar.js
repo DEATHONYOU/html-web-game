@@ -20,8 +20,8 @@ class MpBar {
   
     updateHealth(val) {
       if (val >= 0) {
-        this.health = val;
-        this.w = (this.health / this.maxHealth) * this.maxWidth;
+        this.mp = val;
+        this.w = (this.mp / this.maxmp) * this.maxWidth;
       }
     }
   }
